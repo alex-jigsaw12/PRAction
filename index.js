@@ -6,7 +6,7 @@ async function run() {
     try {
         const filename = core.getInput('file-name');
         const src = __dirname;
-        print(filename);
+        await exec.exec(`${src}/work.sh -v ${filename}`);
     } catch (error) {
         core.setFailed(error.message);
     }
