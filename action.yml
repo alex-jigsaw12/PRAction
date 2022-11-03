@@ -9,5 +9,5 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'node16'
-  pre: chmod +x ./action/work.sh
+  pre: ls
   main: 'action/index.js'
