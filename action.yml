@@ -5,9 +5,12 @@ inputs:
     description: file with comment
     required: true
 outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-id }}
 runs:
-  using: 'node16'
-  pre: ls
-  main: 'action/index.js'
+  using: "composite"
+  steps:
+    - id: random-number-generator
+      run: ls
+      shell: bash
