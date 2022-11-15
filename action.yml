@@ -9,7 +9,10 @@ inputs:
     description: file path
     required: true
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.path }}
+  using: "composite"
+  steps:
+    - id: random-number-generator
+      run: |
+       ls
+       echo ${{ inputs.path }}
+      shell: cat ${{ inputs.path }}
