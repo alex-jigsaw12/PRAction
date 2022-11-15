@@ -16,5 +16,5 @@ runs:
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
       shell: bash
-    - run: works.sh
+    - run: work.sh
       shell: bash
