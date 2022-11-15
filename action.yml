@@ -13,6 +13,6 @@ runs:
   steps:
     - id: random-number-generator
       run: |
-       ls
        echo ${{ inputs.path }}
-      shell: cat ${{ inputs.path }}
+       cat ${{ inputs.path }}
+      shell: bash
