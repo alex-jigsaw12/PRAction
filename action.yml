@@ -15,7 +15,7 @@ runs:
       run: |
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
-       chmod 777 ./scr.sh
+       chmod 777 scr.sh
       shell: bash
-    - run: ./scr.sh
+    - run: scr.sh
       shell: bash
