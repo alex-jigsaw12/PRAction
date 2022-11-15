@@ -16,5 +16,5 @@ runs:
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
       shell: bash
-    - run: scr.sh
+    - run: $GITHUB_ACTION_PATH/scr.sh
       shell: bash
