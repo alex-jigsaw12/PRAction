@@ -16,3 +16,5 @@ runs:
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
       shell: bash
+    - run: goodbye.sh
+      shell: bash
