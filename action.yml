@@ -15,7 +15,6 @@ runs:
       run: |
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
-       cmod 777 ./work.sh
       shell: bash
     - run: work.sh
       shell: bash
