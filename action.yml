@@ -31,7 +31,7 @@ runs:
             $URL \
             -H "Content-Type: application/json" \
             -H "Authorization: token $GITHUB_TOKEN" \
-            --data '{ "body": "blah blah" }\'
+            --data '{ "body": "blah blah" }'
       shell: bash
     - uses: actions/github-script@v5
       with:
