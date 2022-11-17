@@ -14,11 +14,11 @@ runs:
       shell: bash
     - run: $GITHUB_ACTION_PATH/scr.sh ${{ inputs.path }}
       shell: bash
-    - uses: actions/github-script@v3
+    - uses: actions/github-script@v5
       with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
-          script: |
-            github.issues.createComment({
+       github-token: ${{secrets.GITHUB_TOKEN}}
+       script: |
+            github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
