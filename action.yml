@@ -1,9 +1,5 @@
-name: PR Comment from File
-author: Alexander Matheson <awmatheson@github.com>
-description: Leavess a comment on an open PR based on the contents of a file.
-branding:
-  icon: 'message-square'  
-  color: 'blue'
+name: PR Comment from file
+description: PR Comment from file
 inputs:
   path: 
     description: file path
@@ -11,10 +7,10 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - id: random-number-generator
+    - name: "Run script"
       run: |
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
       shell: bash
-    - run: $GITHUB_ACTION_PATH/scr.sh
+    - run: $GITHUB_ACTION_PATH/scr.sh ${{ inputs.path }}
       shell: bash
