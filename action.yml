@@ -1,4 +1,4 @@
-name: PR Comment from file
+﻿name: PR Comment from file
 description: PR Comment from file
 inputs:
   path: 
@@ -14,3 +14,13 @@ runs:
       shell: bash
     - run: $GITHUB_ACTION_PATH/scr.sh ${{ inputs.path }}
       shell: bash
+    - uses: actions/github-script@v3
+      with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '👋 Thanks for reporting!'
+            })
