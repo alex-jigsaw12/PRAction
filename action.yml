@@ -18,7 +18,8 @@ runs:
       run: echo "SOMEENV=$(echo lolasdadasdasdasdasdadasdasdadasd | cut -c 1-6)" >> $GITHUB_ENV
       shell: bash
     - name: Test
-      run: echo $SOMEENV
+      id: testing
+      run: cat ${{ inputs.path }}
       shell: bash
     - uses: actions/github-script@v5
       with:
@@ -27,5 +28,5 @@ runs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '${{ GITHUB_ENV.SOMEENV }}'
+              body: "Execution time: `${{testing.get-time.outputs.result}}`"
             })
