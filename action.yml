@@ -5,19 +5,7 @@ inputs:
     description: file path
     required: true
 runs:
-  using: "composite"
-  steps:
-    - name: "Run script"
-      run: |
-       echo ${{ inputs.path }}
-       cat ${{ inputs.path }}
-      shell: bash
-    - run: $GITHUB_ACTION_PATH/scr.sh ${{ inputs.path }}
-      shell: bash
-    - name: Test
-      id: testing
-      run: cat ${{ inputs.path }}
-      shell: bash
-    - name: Add comment to PRa
-      run: echo "$GITHUB_CONTEXT"
-      shell: bash
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.path }}
