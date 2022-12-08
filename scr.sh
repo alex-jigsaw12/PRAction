@@ -40,23 +40,26 @@ puts Dir.entries(".")
 
 puts "Hello World"
 
-Dir.mkdir("tmp")
 
 def chunker f_in, out_pref, chunksize = 6500
   outfilenum = 1
   File.open(f_in,"r") do |fh_in|
     until fh_in.eof?
-      File.open("tmp/""#{out_pref}_#{outfilenum}.txt","w") do |fh_out|
+     fh_out = ""
         loop do
           line = fh_in.readline
           fh_out << line
           break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
+		message = fh_out
+        coms = github.issue_comments(repo, pr_number)
+        github.add_comment(repo, pr_number, message)
+		puts "==========================================================================================================================================================================="
       end
       outfilenum += 1
     end
   end
-end
+
 
 chunker "#{file_path}", "output_prefix", 6500
 
