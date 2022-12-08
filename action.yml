@@ -9,14 +9,10 @@ runs:
   steps:
     - name: "Run script"
       run: |
-
        echo ${{ inputs.path }}
        cat ${{ inputs.path }}
       shell: bash
     - run: $GITHUB_ACTION_PATH/scr.sh ${{ inputs.path }}
-      shell: bash
-    - name: Set env
-      run: echo "SOMEENV=$(echo lolasdadasdasdasdasdadasdasdadasd | cut -c 1-6)" >> $GITHUB_ENV
       shell: bash
     - name: Test
       id: testing
@@ -26,5 +22,5 @@ runs:
       env:
           URL: ${{ github.event.issue.comments_url }}
       run: |
-         echo  ${{ github.event.issue.comments_url }}
+         echo "URL: $URL"
       shell: bash
