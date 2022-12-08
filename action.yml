@@ -22,5 +22,8 @@ runs:
       env:
           URL: ${{ github.event.issue.comments_url }}
       run: |
-         echo "URL: $URL"
+         echo "${{ github.event.issue.comments_url }}"
+         echo "$URL"
+         echo "$GITHUB.REPOSITORY"
+         echo "$GITHUB_CONTEXT"
       shell: bash
