@@ -6,7 +6,7 @@ require "octokit"
 json = File.read(ENV.fetch("GITHUB_EVENT_PATH"))
 event = JSON.parse(json)
 
-github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
+
 
 if !ENV["GITHUB_TOKEN"]
   puts "Missing GITHUB_TOKEN"
@@ -42,6 +42,7 @@ puts "Hello World"
 
 
 def chunker f_in, out_pref, chunksize = 6500
+github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
   outfilenum = 1
   File.open(f_in,"r") do |fh_in|
     until fh_in.eof?
