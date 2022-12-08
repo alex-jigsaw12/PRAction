@@ -62,11 +62,12 @@ def chunker f_in, out_pref, chunksize = 6500
   end
 
 def somep msg
- message = msg
- coms = github.issue_comments(repo, pr_number)
- github.add_comment(repo, pr_number, message)
+
 end
 
 
+ message = "msg"
+ coms = github.issue_comments(repo, pr_number)
+ github.add_comment(repo, pr_number, message)
 
 chunker "#{file_path}", "output_prefix", 6500
