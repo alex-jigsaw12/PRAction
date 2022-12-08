@@ -53,8 +53,8 @@ def chunker f_in, out_pref, chunksize = 6500
           #break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
         message = fh_out
-        coms = $github.issue_comments($repo, pr_number)
-        $github.add_comment($repo, pr_number, message)
+        coms = $github.issue_comments($repo, $pr_number)
+        $github.add_comment($repo, $pr_number, message)
 		puts fh_out
 		puts "===================================================================================================================="
       end
