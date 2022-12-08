@@ -62,7 +62,7 @@ chunker "#{file_path}", "output_prefix", 6500
 
 Dir.foreach('tmp/') do |filename|
   next if filename == '.' or filename == '..'
-  message = File.read(filename)
+  message = File.read("tmp/""#{filename}")
   coms = github.issue_comments(repo, pr_number)
   github.add_comment(repo, pr_number, message)
   puts "#{filename}"
