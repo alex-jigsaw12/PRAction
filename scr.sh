@@ -6,7 +6,7 @@ require "octokit"
 json = File.read(ENV.fetch("GITHUB_EVENT_PATH"))
 event = JSON.parse(json)
 
-github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
+$github = Octokit::Client.new(access_token: ENV["GITHUB_TOKEN"])
 
 if !ENV["GITHUB_TOKEN"]
   puts "Missing GITHUB_TOKEN"
@@ -49,13 +49,16 @@ def chunker f_in, out_pref, chunksize = 6500
         loop do
           line = fh_in.readline
           fh_out << line
-          break if fh_out.size > (chunksize-line.length) || fh_in.eof?
+		  break if fh_out.include? "----------- end diff -----------" or fh_in.eof?
+          #break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
-		message = fh_out
+        message = fh_out
         coms = github.issue_comments(repo, pr_number)
         github.add_comment(repo, pr_number, message)
-		puts "==========================================================================================================================================================================="
+		puts fh_out
+		puts "===================================================================================================================="
       end
+	  #puts line
       outfilenum += 1
     end
   end
