@@ -1,4 +1,3 @@
-cat $1
 #!/usr/bin/env ruby
 
 require "json"
