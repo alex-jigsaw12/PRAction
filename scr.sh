@@ -36,13 +36,8 @@ else
 end
 file_path = ARGV[0]
 
-puts Dir.entries(".")
-
-puts "Hello World"
-
-
-def chunker f_in, out_pref, chunksize = 6500
-  outfilenum = 1
+def chunker f_in, chunksize = 6500
+  chunknum = 1
   File.open(f_in,"r") do |fh_in|
     until fh_in.eof?
      fh_out = ""
@@ -55,17 +50,9 @@ def chunker f_in, out_pref, chunksize = 6500
         message = fh_out
         coms = $github.issue_comments($repo, $pr_number)
         $github.add_comment($repo, $pr_number, message)
-		puts fh_out
-		puts "===================================================================================================================="
       end
-	  #puts line
-      outfilenum += 1
+      chunknum += 1
     end
   end
 
-
-
-
-
-
-chunker "#{file_path}", "output_prefix", 6500
+chunker file_path, 6500
