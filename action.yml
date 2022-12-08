@@ -18,11 +18,6 @@ runs:
       id: testing
       run: cat ${{ inputs.path }}
       shell: bash
-    - name: Add comment to PR
-      env:
-          URL: ${{ github.event.issue.comments_url }
-      run: echo "$URL"
-      shell: bash
     - name: Add comment to PRa
       run: echo "$GITHUB_CONTEXT"
       shell: bash
