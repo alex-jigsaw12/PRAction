@@ -44,7 +44,7 @@ def chunker f_in, minsize, chunksize = 6500
         loop do
           line = fh_in.readline
           fh_out << line
-		  break if fh_out.include? "----------- end diff -----------" and fh_out.size > (minsize-line.length) and < (chunksize-line.length) or fh_in.eof?
+		  break if fh_out.include? "----------- end diff -----------" and fh_out.size > (minsize-line.length) and fh_out.size < (chunksize-line.length) or fh_in.eof?
           #break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
         message = fh_out
