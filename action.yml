@@ -4,8 +4,12 @@ inputs:
   path: 
     description: file path
     required: true
+  header: 
+    description: comment header
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
     - ${{ inputs.path }}
+    - ${{ inputs.header }}
