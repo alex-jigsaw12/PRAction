@@ -57,8 +57,9 @@ def chunker f_in, minsize, chunksize = 65000
        
         coms = $github.issue_comments($repo, $pr_number)
         $github.add_comment($repo, $pr_number, message)
+         chunknum += 1
       end
-      chunknum += 1
+  
     end
   end
 
