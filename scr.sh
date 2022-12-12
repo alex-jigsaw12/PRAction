@@ -35,7 +35,7 @@ else
   pr_number = pr["number"]
 end
 file_path = ARGV[0]
-header = ARGV[1]
+$header = ARGV[1]
 
 def chunker f_in, minsize, chunksize = 65000
   chunknum = 1
@@ -51,7 +51,7 @@ def chunker f_in, minsize, chunksize = 65000
         if chunknum > 1 
          message = " < Continuation of previous comment" + "\n" + "<details><summary>Show Output</summary> " + "\n" + "\n" + "```diff"  + "\n" + fh_out + "\n" + "```"
         else
-         message = header + "\n" + "<details><summary>Show Output</summary> " + "\n" + "\n" + "```diff"  + "\n" + fh_out + "\n" + "```"
+         message = $header + "\n" + "<details><summary>Show Output</summary> " + "\n" + "\n" + "```diff"  + "\n" + fh_out + "\n" + "```"
         end
 
        
