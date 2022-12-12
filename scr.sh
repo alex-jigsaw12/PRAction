@@ -55,4 +55,4 @@ def chunker f_in, minsize, chunksize = 6500
     end
   end
 
-chunker file_path, 5500 6500
+chunker file_path, 5500, 6500
