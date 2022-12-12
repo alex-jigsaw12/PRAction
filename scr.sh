@@ -47,7 +47,7 @@ def chunker f_in, minsize, chunksize = 6500
 		  break if fh_out.include? "----------- end diff -----------" and fh_out.size > (minsize-line.length) and fh_out.size < (chunksize-line.length) or fh_in.eof?
           #break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
-        message = fh_out
+        message = "<details><summary>Show Output</summary> " + "\n" + "```diff"  + "\n" + fh_out + "\n" + "```"
         coms = $github.issue_comments($repo, $pr_number)
         $github.add_comment($repo, $pr_number, message)
       end
