@@ -36,7 +36,7 @@ else
 end
 file_path = ARGV[0]
 
-def chunker f_in, chunksize = 6500
+def chunker f_in, minsize, chunksize = 6500
   chunknum = 1
   File.open(f_in,"r") do |fh_in|
     until fh_in.eof?
@@ -44,7 +44,7 @@ def chunker f_in, chunksize = 6500
         loop do
           line = fh_in.readline
           fh_out << line
-		  break if fh_out.include? "----------- end diff -----------" or fh_in.eof?
+		  break if fh_out.include? "----------- end diff -----------" and fh_out.size > (minsize-line.length) and < (chunksize-line.length) or fh_in.eof?
           #break if fh_out.size > (chunksize-line.length) || fh_in.eof?
         end
         message = fh_out
@@ -55,4 +55,4 @@ def chunker f_in, chunksize = 6500
     end
   end
 
-chunker file_path, 6500
+chunker file_path, 5500 6500
